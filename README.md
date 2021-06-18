@@ -58,4 +58,4 @@
  | building_name     | string     |              |
  | phone_number      | integer    | null: false, |
 
- - belongs_to :older
+ - belongs_to :order
