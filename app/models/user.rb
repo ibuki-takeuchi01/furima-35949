@@ -12,6 +12,6 @@ class User < ApplicationRecord
       validates :first_name_kana, format: { with: /\A[ァ-ヶー－]+\z/ }
       validates :birth_date
       end
-      validates :encrypted_password,:password,:password_confirmation,length:{minimum:6},format:{with: /(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]{6,}/}
+      validates :encrypted_password,:password,:password_confirmation,format:{with: /(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]{6,}/}
 end
 
