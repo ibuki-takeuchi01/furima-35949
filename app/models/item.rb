@@ -2,14 +2,14 @@ class Item < ApplicationRecord
 
   with_options presence: true do
   validates :image
-  validates :product_name
-  validates :description
+  validates :product_name,length: { maximum: 40 }
+  validates :description,length: { maximum: 1000 }
   validates :category_id
   validates :status_id
   validates :shipping_charge_id
   validates :prefecture_id
   validates :day_to_ship_id
-  validates :price
+  validates :price, inclusion: { in: 300..9999999 }
   end
 
   belongs_to :user
