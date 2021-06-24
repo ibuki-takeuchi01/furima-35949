@@ -1,6 +1,7 @@
 class Item < ApplicationRecord
 
   with_options presence: true do
+  validates :image
   validates :product_name
   validates :description
   validates :category_id
@@ -24,7 +25,7 @@ class Item < ApplicationRecord
   #ジャンルの選択が「--」の時は保存できないようにする
   validates :category_id, numericality: { other_than: 1 }
   validates :status_id, numericality: { other_than: 1 }
-  validates :shipping_charege_id, numericality: { other_than: 1 }
+  validates :shipping_charge_id, numericality: { other_than: 1 }
   validates :prefecture_id, numericality: { other_than: 1 }
   validates :day_to_ship_id, numericality: { other_than: 1 }
 end
