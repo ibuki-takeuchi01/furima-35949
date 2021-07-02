@@ -9,7 +9,7 @@ RSpec.describe OrderShippingAddress, type: :model do
     @item.save
     # binding.pry
     @order_address = FactoryBot.build(:order_shipping_address,user_id: @user.id,item_id: @item.id)
-    sleep 0.3
+    sleep 0.1
 end
 
 describe '商品の購入機能' do
