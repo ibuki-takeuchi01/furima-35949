@@ -43,7 +43,7 @@ end
     @order_address.valid?
     expect(@order_address.errors.full_messages).to include("Postal code is invalid")
   end
-  it 'postal_codeが全角英数字であれば登録できない' do
+  it 'postal_codeが全角数字であれば登録できない' do
     @order_address.postal_code = '１１１−２２２'
     @order_address.valid?
     expect(@order_address.errors.full_messages).to include("Postal code is invalid")
@@ -80,6 +80,21 @@ end
   end
   it 'phone_numberが12桁以上では登録できない' do
     @order_address.phone_number = '000011112222'
+    @order_address.valid?
+    expect(@order_address.errors.full_messages).to include("Phone number is invalid")
+  end
+  it 'phone_numberが半角英字では登録できない' do
+    @order_address.phone_number = 'aaabbbbcccc'
+    @order_address.valid?
+    expect(@order_address.errors.full_messages).to include("Phone number is invalid")
+  end
+  it 'phone_numberが全角数字では登録できない' do
+    @order_address.phone_number = '０００１１１１２２２２'
+    @order_address.valid?
+    expect(@order_address.errors.full_messages).to include("Phone number is invalid")
+  end
+  it 'phone_numberが半角英数字が混合では登録できない' do
+    @order_address.phone_number = '0000aaaa2222'
     @order_address.valid?
     expect(@order_address.errors.full_messages).to include("Phone number is invalid")
   end
