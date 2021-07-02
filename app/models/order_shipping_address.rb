@@ -3,14 +3,13 @@ class OrderShippingAddress
   attr_accessor :postal_code, :prefecture_id, :city_name, :address, :building_name, :phone_number, :token, :item_id, :user_id
 
   with_options presence: true do
+  validates :token
   validates :postal_code, format: {with: /\A[0-9]{3}-[0-9]{4}\z/}
-  validates :city_name,format: { with: /\A[ぁ-んァ-ン一-龥]/}
+  validates :prefecture_id, numericality: { other_than: 1 }
+  validates :city_name
   validates :address
   validates :phone_number, format: {with: /\A\d{10}\z|\A\d{11}\z/}
-  validates :token
   end
-
-  validates :prefecture_id, numericality: { other_than: 1 }
 
   def save
     order = Order.create(user_id: user_id, item_id: item_id)
