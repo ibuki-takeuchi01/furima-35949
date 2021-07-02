@@ -73,8 +73,13 @@ end
     @order_address.valid?
     expect(@order_address.errors.full_messages).to include("Phone number is invalid")
   end
-  it 'phone_numberが10桁or11桁で無ければば登録できない' do
+  it 'phone_numberが9桁以下では登録できない' do
     @order_address.phone_number = '000111222'
+    @order_address.valid?
+    expect(@order_address.errors.full_messages).to include("Phone number is invalid")
+  end
+  it 'phone_numberが12桁以上では登録できない' do
+    @order_address.phone_number = '000011112222'
     @order_address.valid?
     expect(@order_address.errors.full_messages).to include("Phone number is invalid")
   end
