@@ -1,7 +1,7 @@
 class Item < ApplicationRecord
 
   with_options presence: true do
-  validates :image
+  validates :images
   validates :product_name,length: { maximum: 40 }
   validates :description,length: { maximum: 1000 }
   validates :category_id
@@ -14,7 +14,7 @@ class Item < ApplicationRecord
 
   belongs_to :user
   has_one :order
-  has_one_attached :image
+  has_many_attached :images
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :category
