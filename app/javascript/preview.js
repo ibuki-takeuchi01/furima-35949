@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
       // 表示する画像を生成
       const blobImage = document.createElement('img')
       blobImage.setAttribute('src', blob)
-      blobImage.setAttribute('height', 100)
+      blobImage.setAttribute('height', 150)
 
       // ファイル選択ボタンを生成
       const inputHTML = document.createElement('input')
