@@ -1,0 +1,11 @@
+  <% @results.each do |result| %>
+  <br>
+  <li>
+    <%= result.product_name %>
+    </li>
+    <li class='list'>
+        <%= link_to item_path(result)do %>
+        <div class='item-img-content'>
+          <%= image_tag result.images[0], class: "item-img" %>
+          <% end%>
+<% end %>

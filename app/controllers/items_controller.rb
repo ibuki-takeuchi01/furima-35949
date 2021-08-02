@@ -3,9 +3,14 @@ class ItemsController < ApplicationController
   before_action :set_item, only: [:show,:edit,:update,:destroy]
   before_action :contributor_confirmation, only: [:edit,:update,:destroy]
   before_action :sold_out_item, only: [:edit,:update,:destroy]
+  before_action :search_product, only: [:index, :search]
 
   def index
     @items = Item.includes(:user).order(created_at: :desc)
+  end
+
+  def search
+    @results = @p.result  # 検索条件にマッチした商品の情報を取得
   end
 
   def new
@@ -59,6 +64,10 @@ class ItemsController < ApplicationController
 
   def set_item
     @item = Item.find(params[:id])
+  end
+
+  def search_product
+    @p = Item.ransack(params[:q])  # 検索オブジェクトを生成
   end
 
 end
